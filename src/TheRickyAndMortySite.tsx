@@ -1,9 +1,10 @@
-import { Button } from '@/components/ui/button'
+import { RouterProvider } from 'react-router'
+import { appRouter } from '@/router/app.router'
 
 export const TheRickyAndMortySite = () => {
   return (
     <>
-      <Button>Probando shadcn</Button>
+      <RouterProvider router={appRouter}></RouterProvider>
     </>
   )
 }
