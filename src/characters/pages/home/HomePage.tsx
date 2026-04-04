@@ -1,3 +1,4 @@
+import { CharacterGrid } from '@/characters/components/CharacterGrid'
 import { CustomJumbotron } from '@/components/custom/CustomJumbotron'
 
 export const HomePage = () => {
@@ -8,6 +9,9 @@ export const HomePage = () => {
         title="The Ricky and Morty Site"
         subtitle="A place where you can see your favorite characters"
       />
+
+      {/* Grid */}
+      <CharacterGrid />
     </>
   )
 }
