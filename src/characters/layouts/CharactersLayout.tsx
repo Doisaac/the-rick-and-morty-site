@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router'
+import { CustomNavigation } from '../components/CustomNavigation'
 
 export const CharactersLayout = () => {
   return (
@@ -11,6 +12,8 @@ export const CharactersLayout = () => {
 
       {/* Content */}
       <main className="relative z-20 max-w-5xl mx-auto py-20 px-6">
+        <CustomNavigation />
+
         <Outlet />
       </main>
     </div>
