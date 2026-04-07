@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router'
-import { CustomNavigation } from '../components/CustomNavigation'
+import { CustomNavigation } from '@/components/custom/CustomNavigation'
 
 export const CharactersLayout = () => {
   return (

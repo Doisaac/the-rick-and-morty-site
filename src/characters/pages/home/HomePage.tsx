@@ -1,5 +1,5 @@
 import { CharacterGrid } from '@/characters/components/CharacterGrid'
-import { CustomPagination } from '@/characters/components/CustomPagination'
+import { CustomPagination } from '@/components/custom/CustomPagination'
 import { CustomJumbotron } from '@/components/custom/CustomJumbotron'
 
 export const HomePage = () => {
