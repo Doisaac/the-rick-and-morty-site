@@ -1,9 +1,9 @@
+import { useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useSearchParams } from 'react-router'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { useSearchParams } from 'react-router'
-import { useEffect } from 'react'
 import { useCharacter } from '@/characters/hooks/useCharacter'
 
 interface Props {
