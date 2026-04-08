@@ -126,5 +126,9 @@
   }
   html {
     @apply font-sans;
+
+    /* Scroll bar */
+    scrollbar-width: thin;
+    scrollbar-color: oklch(49.6% 0.265 301.924) #222;
   }
 }
