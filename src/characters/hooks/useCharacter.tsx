@@ -6,5 +6,6 @@ export const useCharacter = (page: number) => {
     queryKey: ['character', { page }],
     queryFn: () => getCharactersByPage(page),
     staleTime: 1000 * 60 * 10,
+    placeholderData: (characters) => characters,
   })
 }
