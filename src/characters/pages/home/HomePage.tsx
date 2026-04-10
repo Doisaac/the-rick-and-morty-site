@@ -1,9 +1,7 @@
 import { useSearchParams } from 'react-router'
 
-import { CharacterGrid } from '@/characters/components/CharacterGrid'
 import { CustomJumbotron } from '@/components/custom/CustomJumbotron'
-import { CustomPagination } from '@/components/custom/CustomPagination'
-import { Spinner } from '@/components/ui/spinner'
+import { RenderContent } from './ui/RenderContent'
 import { useCharacter } from '@/characters/hooks/useCharacter'
 
 export const HomePage = () => {
@@ -12,7 +10,13 @@ export const HomePage = () => {
   const queryPage = searchParams.get('page') ?? '1'
   const page = isNaN(+queryPage) ? 1 : +queryPage
 
-  const { data: characterResponse, isLoading, isFetching } = useCharacter(page)
+  const {
+    data: characterResponse,
+    isLoading,
+    isFetching,
+    isError,
+    fetchStatus,
+  } = useCharacter(page)
 
   return (
     <>
@@ -23,20 +27,13 @@ export const HomePage = () => {
       />
 
       {/* Grid */}
-      {isLoading ? (
-        <div className="flex justify-center items-center py-20">
-          <Spinner className="size-10 stroke-white" />
-        </div>
-      ) : (
-        <>
-          <CharacterGrid
-            isFetching={isFetching}
-            characters={characterResponse?.results || []}
-          />
-
-          <CustomPagination totalPages={characterResponse?.info.pages || 0} />
-        </>
-      )}
+      <RenderContent
+        fetchStatus={fetchStatus}
+        isFetching={isFetching}
+        isError={isError}
+        isLoading={isLoading}
+        characterResponse={characterResponse}
+      />
     </>
   )
 }
