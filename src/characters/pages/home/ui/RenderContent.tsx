@@ -36,7 +36,7 @@ export const RenderContent = ({
         </p>
       )}
 
-      {/* Error with data */}
+      {/* Error */}
       {isError && (
         <p className="text-red-400 text-center py-20 font-semibold">
           Too many requests. Please wait a few seconds and try again.
