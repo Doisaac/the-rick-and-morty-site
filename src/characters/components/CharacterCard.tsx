@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardHeader } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import type { Character, Status } from '../types/character.interface'
+import { useNavigate } from 'react-router'
 
 type StatusConfig = {
   icon: React.ComponentType<{ className?: string }>
@@ -30,7 +31,14 @@ interface Props {
 }
 
 export const CharacterCard = ({ character }: Props) => {
+  const navigate = useNavigate()
+
   const { icon: Icon, styles } = STATUS_CONFIG[character.status]
+
+  const handleClick = (characterId: string) => {
+    const slug = characterId.toLowerCase().split(' ').join('-')
+    navigate(`/character/${slug}`)
+  }
 
   return (
     <Card className="relative group overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-gradient-to-br from-white to-gray-50">
@@ -77,7 +85,10 @@ export const CharacterCard = ({ character }: Props) => {
           transition-all duration-400
         "
       >
-        <Button className="bg-purple-700" onClick={() => alert('hey')}>
+        <Button
+          className="bg-purple-700"
+          onClick={() => handleClick(character.name)}
+        >
           <PlusIcon />
           Info
         </Button>

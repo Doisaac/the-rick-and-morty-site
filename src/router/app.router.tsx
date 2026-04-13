@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router'
+import { createBrowserRouter, Navigate } from 'react-router'
 
 import { Character } from '@/characters/pages/character/CharacterPage'
 import { CharactersLayout } from '@/characters/layouts/CharactersLayout'
@@ -15,12 +15,16 @@ export const appRouter = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: 'character/1',
+        path: 'character/:characterSlug',
         element: <Character />,
       },
       {
         path: 'search',
         element: <SearchPage />,
+      },
+      {
+        path: '*',
+        element: <Navigate to="/" />,
       },
     ],
   },
