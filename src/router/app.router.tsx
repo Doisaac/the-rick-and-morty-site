@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router'
 
 import { Character } from '@/characters/pages/character/CharacterPage'
+import { CharacterDetailLayout } from '@/characters/layouts/CharactersDetailLayout'
 import { CharactersLayout } from '@/characters/layouts/CharactersLayout'
 import { HomePage } from '@/characters/pages/home/HomePage'
 import { SearchPage } from '@/characters/pages/search/SearchPage'
@@ -15,16 +16,22 @@ export const appRouter = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: 'character/:characterSlug',
-        element: <Character />,
-      },
-      {
         path: 'search',
         element: <SearchPage />,
       },
       {
         path: '*',
         element: <Navigate to="/" />,
+      },
+    ],
+  },
+  {
+    path: '/character',
+    element: <CharacterDetailLayout />,
+    children: [
+      {
+        path: ':characterSlug',
+        element: <Character />,
       },
     ],
   },
