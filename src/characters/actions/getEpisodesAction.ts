@@ -1,14 +1,5 @@
 import { rickyAndMortyApi } from '../api/character.api'
-
-export interface Episode {
-  id: number
-  name: string
-  air_date: string
-  episode: string
-  characters: string[]
-  url: string
-  created: Date
-}
+import type { Episode } from '../types/episode.interface'
 
 export const getEpisodesAction = async (ids: number[]) => {
   if (!ids.length) return []
