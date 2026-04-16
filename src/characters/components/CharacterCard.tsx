@@ -35,9 +35,8 @@ export const CharacterCard = ({ character }: Props) => {
 
   const { icon: Icon, styles } = STATUS_CONFIG[character.status]
 
-  const handleClick = (characterId: string) => {
-    const slug = characterId.toLowerCase().split(' ').join('-')
-    navigate(`/character/${slug}`)
+  const handleClick = (characterId: number) => {
+    navigate(`/character/${characterId}`)
   }
 
   return (
@@ -87,7 +86,7 @@ export const CharacterCard = ({ character }: Props) => {
       >
         <Button
           className="bg-purple-700"
-          onClick={() => handleClick(character.name)}
+          onClick={() => handleClick(character.id)}
         >
           <PlusIcon />
           Info
