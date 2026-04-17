@@ -5,6 +5,7 @@ import { InfoItem } from './ui/InfoItem'
 import { StatusBadge } from '../../components/StatusBadge'
 import { useCharacterByName } from '@/characters/hooks/useCharacterByName'
 import { useEpisodes } from '@/characters/hooks/useEpisodes'
+import { Spinner } from '@/components/ui/spinner'
 
 export const CharacterPage = () => {
   const { characterId } = useParams()
@@ -22,7 +23,12 @@ export const CharacterPage = () => {
 
   const { data: episodes } = useEpisodes(episodesId.slice(0, 10))
 
-  if (isLoading) return <p className="text-3xl text-white">Loading...</p>
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center py-20">
+        <Spinner className="size-10 stroke-white" />
+      </div>
+    )
 
   if (isError || !character) {
     return <Navigate to="/" />
