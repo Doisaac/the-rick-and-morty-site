@@ -20,7 +20,7 @@ export const CharacterPage = () => {
       return Number(episode.split('/').pop())
     }) ?? []
 
-  const { data: episodes } = useEpisodes(episodesId)
+  const { data: episodes } = useEpisodes(episodesId.slice(0, 10))
 
   if (isLoading) return <p className="text-3xl text-white">Loading...</p>
 
