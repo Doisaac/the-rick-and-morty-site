@@ -1,6 +1,6 @@
 import { CharacterGrid } from '@/characters/components/CharacterGrid'
 import { CustomPagination } from '@/components/custom/CustomPagination'
-import { Spinner } from '@/components/ui/spinner'
+import { QueryLoading } from '@/components/custom/QueryLoading'
 import type { CharacterResponse } from '@/characters/types/get-characters-by-page.response'
 
 interface RenderContentProps {
@@ -21,9 +21,11 @@ export const RenderContent = ({
   // First load
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center py-20">
-        <Spinner className="size-10 stroke-white" />
-      </div>
+      <QueryLoading
+        className="mx-8 my-20"
+        title="Loading characters"
+        description="Preparing the portal and fetching the next batch of characters."
+      />
     )
   }
 
