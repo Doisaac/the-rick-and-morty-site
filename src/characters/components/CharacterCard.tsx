@@ -1,30 +1,10 @@
-import { Skull, PlusIcon, Heart, CircleQuestionMark } from 'lucide-react'
+import { PlusIcon } from 'lucide-react'
+import { useNavigate } from 'react-router'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
-import type { Character, Status } from '../types/character.interface'
-import { useNavigate } from 'react-router'
-
-type StatusConfig = {
-  icon: React.ComponentType<{ className?: string }>
-  styles: string
-}
-
-const STATUS_CONFIG: Record<Status, StatusConfig> = {
-  Alive: {
-    icon: Heart,
-    styles: 'bg-green-500/70',
-  },
-  Dead: {
-    icon: Skull,
-    styles: 'bg-red-500/70',
-  },
-  unknown: {
-    icon: CircleQuestionMark,
-    styles: 'bg-gray-500/70',
-  },
-}
+import { StatusBadge } from './StatusBadge'
+import type { Character } from '../types/character.interface'
 
 interface Props {
   character: Character
@@ -32,8 +12,6 @@ interface Props {
 
 export const CharacterCard = ({ character }: Props) => {
   const navigate = useNavigate()
-
-  const { icon: Icon, styles } = STATUS_CONFIG[character.status]
 
   const handleClick = (characterId: number) => {
     navigate(`/character/${characterId}`)
@@ -49,15 +27,10 @@ export const CharacterCard = ({ character }: Props) => {
         />
 
         {/* Character Status */}
-        <div
-          className={cn(
-            'absolute top-0 left-6 flex gap-1 items-center text-white backdrop-blur-sm rounded-xl px-1.5 py-0.5 group:',
-            styles
-          )}
-        >
-          <Icon className="size-5" />
-          {character.status}
-        </div>
+        <StatusBadge
+          className="absolute top-0 left-6"
+          status={character.status}
+        />
       </div>
 
       <CardHeader className="py-2 bg-gray-50/50 backdrop-blur-sm relative top-3 group-hover:-top-[30px] transition-all duration-500 z-20">
