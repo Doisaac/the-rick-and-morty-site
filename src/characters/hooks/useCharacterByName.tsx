@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getCharacterByIdAction } from '../actions/getCharacterByNameAction'
+import { getCharacterByIdAction } from '../actions/getCharacterByIdAction'
 
 export const useCharacterByName = (characterId: number) => {
   return useQuery({
