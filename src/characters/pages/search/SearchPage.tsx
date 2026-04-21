@@ -11,7 +11,7 @@ export const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const nameParam = searchParams.get('name') ?? undefined
-  const { data: character, isFetching } = useSearchCharacter(nameParam)
+  const { data: character, isFetching, isError } = useSearchCharacter(nameParam)
 
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -32,6 +32,9 @@ export const SearchPage = () => {
     })
   }
 
+  const hasNoResults =
+    !!nameParam && !isFetching && character?.results.length === 0
+
   return (
     <>
       {/* Header */}
@@ -50,10 +53,34 @@ export const SearchPage = () => {
         />
       </form>
 
-      <CharacterGrid
-        isFetching={isFetching}
-        characters={character?.results || []}
-      />
+      {!nameParam && (
+        <p className="mt-20 text-yellow-500 text-center font-semibold">
+          Please enter a character name to search.
+        </p>
+      )}
+
+      {isError && (
+        <div className="mt-20">
+          <p className="text-red-500 text-center font-semibold">
+            An error occurred while searching for the character.
+          </p>
+        </div>
+      )}
+
+      {!isError && hasNoResults && (
+        <div className="mt-20">
+          <p className="text-yellow-500 text-center font-semibold">
+            Character not found.
+          </p>
+        </div>
+      )}
+
+      {!isError && nameParam && !hasNoResults && (
+        <CharacterGrid
+          isFetching={isFetching}
+          characters={character?.results || []}
+        />
+      )}
     </>
   )
 }
