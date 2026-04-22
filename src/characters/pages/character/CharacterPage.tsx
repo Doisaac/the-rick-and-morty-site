@@ -130,7 +130,7 @@ export const CharacterPage = () => {
                     className="bg-card rounded-lg px-4 py-3 flex items-center justify-between"
                   >
                     <div>
-                      <span className="text-accent-foreground font-mono text-sm mr-3">
+                      <span className="text-purple-700 font-mono text-sm mr-3">
                         {ep.episode}
                       </span>
                       <span className="text-card-foreground">{ep.name}</span>
