@@ -18,7 +18,7 @@ export const CharacterCard = ({ character }: Props) => {
   }
 
   return (
-    <Card className="relative group overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-gradient-to-br from-white to-gray-50">
+    <Card className="relative group overflow-hidden hover:-translate-y-1 transition-all duration-300 bg-gradient-to-br from-white to-gray-50 hover:shadow-lg hover:shadow-purple-700">
       <div className="relative h-64 z-20">
         <img
           src={character.image}
